@@ -1,0 +1,14 @@
+@using FinalBeltExam.Models
+@model User
+
+
+<div class="d-flex justify-content-around">
+    <a href="/IdeaFeed" class="btn btn-lg btn-outline-info">Bright Ideas</a>
+    <a href="/" class="btn btn-lg btn-outline-dark">Logout</a>
+</div>
+<br>
+<div>
+    <h5>Name: @ViewBag.OneUse.Name</h5>
+    <h5>Alias: @ViewBag.OneUse.Alias</h5>
+    <h5>Email: @ViewBag.OneUse.Email</h5>
+</div>

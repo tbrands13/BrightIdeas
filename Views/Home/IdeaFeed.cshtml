@@ -1,0 +1,40 @@
+@using FinalBeltExam.Models
+@model Idea
+
+<div class="d-flex justify-content-between">
+    <h1>Hello, @ViewBag.LoggedUser.Alias </h1>
+    <a href="/" class="btn btn-lg btn-outline-dark">Logout</a>
+</div>
+<div>
+    <form class="form-group" asp-controller="Home" asp-action="AddIdea" method="POST">
+        <input asp-for="Content" class="form-control" placeholder="post something witty here...">
+        <span asp-validation-for="Content" class="text-danger"></span>
+        <br>
+        <input type="submit" class="btn btn-lg btn-outline-primary">
+    </form>
+</div>
+<br>
+    @foreach(Idea idea in ViewBag.AllIdeas)
+    {
+
+<div class="card">
+    <div class="card-header">
+        <h5><a href="/users/@idea.UserId">@idea.Creator.Alias</a> says:</h5>
+    </div>
+    <div class="card-body">
+        <p>@idea.Content</p>
+        
+    </div>
+    <div class="card-footer">
+        <p><a href="/idea/@idea.IdeaId/like">Like</a></p>
+        <p><a href="/idea/@idea.IdeaId" >@idea.Likes.Count</a> people like this</p>
+        @{
+            if(idea.UserId == ViewBag.User)
+            {
+                <p><a href="/idea/@idea.IdeaId/delete" class="btn btn-sm btn-outline-danger">Delete Idea</a></p>
+            }
+        }
+    </div>
+</div>
+<br>
+    }

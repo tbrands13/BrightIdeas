@@ -1,0 +1,39 @@
+@using FinalBeltExam.Models
+@model Idea
+
+
+<div class="d-flex justify-content-around">
+    <a href="/IdeaFeed" class="btn btn-lg btn-outline-info">Bright Ideas</a>
+    <a href="/" class="btn btn-lg btn-outline-dark">Logout</a>
+</div>
+<br>
+
+
+    
+
+<div class="card mb-8">
+    <div class="card-header">
+        <h5><a href="">@ViewBag.OneIdea.Creator.Alias</a> says:</h5>
+    </div>
+    <div class="card-body">
+        <p>@ViewBag.OneIdea.Content</p>
+    </div>
+</div>
+    
+    <div>
+        <h4>People who liked this Idea:</h4>
+        <table class="table table-dark table-striped table-hover">
+            <tr>
+                <th>Alias</th>
+                <th>Name</th>
+            </tr>
+            
+            @foreach (Like idea in ViewBag.OneIdea.Likes)
+            {
+            <tr>
+                <td>@idea.User.Alias</td>
+                <td>@idea.User.Name</td>
+            </tr>
+            }
+        </table>
+    </div>
